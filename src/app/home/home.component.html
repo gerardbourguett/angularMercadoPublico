@@ -1,26 +1,41 @@
-<app-tabla></app-tabla>
-
-<!-- <app-tabla ></app-tabla>
- -->
-<div class="tabla">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">Código</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Codigo Estado</th>
-                <th scope="col">Fecha Cierre</th>
-                <th scope="col">#</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let lista of listadoLicitaciones.Listado">
-                <td scope="row">{{lista.CodigoExterno}}</td>
-                <td>{{lista.Nombre}}</td>
-                <td>{{lista.CodigoEstado}}</td>
-                <td>{{lista.FechaCierre}}</td>
-                <td><input [routerLink]="['/','detalle',lista.CodigoExterno]" type="button" value="Ver más"></td>
-            </tr>
-        </tbody>
-    </table>
+<div class="grid">
+    <header class="page-header">
+        <div class="content">
+            <app-header></app-header>
+        </div>
+    </header>
+    <aside class="page-leftbar">
+        <div class="content">
+            <app-leftbar></app-leftbar>
+        </div>
+    </aside>
+    <main class="page-main">
+        <div class="table-responsive-lg">
+            <table class="table table-sm">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha de Cierre</th>
+                        <th scope="col">Tiempo restante</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let lista of listadoLicitaciones.Listado">
+                        <td scope="row">{{lista.CodigoExterno}}</td>
+                        <td>{{lista.Nombre}}</td>
+                        <td>{{lista.FechaCierre | date}}</td>
+                        <td>{{lista.CodigoEstado}}</td>
+                        <td><input [routerLink]="['/','detalle',lista.CodigoExterno]" type="button" value="Ver más"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="page-footer">
+        <div class="content">
+            <app-footer></app-footer>
+        </div>
+    </footer>
 </div>
