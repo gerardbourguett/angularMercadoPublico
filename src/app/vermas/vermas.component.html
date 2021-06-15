@@ -1,0 +1,84 @@
+<div class="container">
+    <div *ngIf="load" class="container mt-4">
+        <h1>Detalle Licitacion</h1>
+        <table class="table table-bordered">
+            <thead>
+                <th scope="col">Código Externo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Comprador</th>
+                <th scope="col">Fecha Cierre</th>
+                <th scope="col">Monto Estimado</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dato of respuesta.Listado">
+                    <th scope="row">{{ dato.CodigoExterno }}</th>
+                    <td>{{ dato.Nombre }}</td>
+                    <td>{{ dato.Descripcion }}</td>
+                    <td>{{ dato.Comprador.NombreOrganismo }}</td>
+                    <td>{{ dato.Fechas.FechaCierre }}</td>
+                    <td>{{ dato.MontoEstimado }}</td>
+                    <!-- <div>
+                                <td *ngif="dato.MontoEstimado !== null">{{ dato.MontoEstimado }}</td>
+                                <td *ngelse>No hay Monto Estimado</td>
+                            </div> -->
+                </tr>
+            </tbody>
+        </table>
+        <h3>Fechas Licitacion</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Inicio</th>
+                    <th scope="col">Fecha Cierre</th>
+                    <th scope="col">Fecha Adjudicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fechas of respuesta.Listado">
+                    <td>{{fechas.Fechas.FechaPublicacion}}</td>
+                    <td>{{fechas.Fechas.FechaCierre}}</td>
+                    <td>{{fechas.Fechas.FechaAdjudicacion}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Fechas Preguntas</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Inicio Preguntas</th>
+                    <th scope="col">Término Preguntas</th>
+                    <th scope="col">Publicación de Preguntas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fechas of respuesta.Listado">
+                    <td>{{fechas.Fechas.FechaInicio}}</td>
+                    <td>{{fechas.Fechas.FechaFinal}}</td>
+                    <td>{{fechas.Fechas.FechaPubRespuestas}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Items</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Correlativo</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Nombre Producto</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Categoría</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of respuesta.Listado">
+                <tr>
+                    <td scope="row">{{item.Items.Listado[0].Correlativo}}</td>
+                    <td>{{item.Items.Listado[0].Cantidad}}</td>
+                    <td>{{item.Items.Listado[0].NombreProducto}}</td>
+                    <td>{{item.Items.Listado[0].Descripcion}}</td>
+                    <td>{{item.Items.Listado[0].Categoria}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
